@@ -1,16 +1,61 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
   <!-- Base application theme. -->
-  <style name="Theme.GuardianApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+  <style name="Theme.GuardianApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <!-- Primary brand color. -->
-    <item name="colorPrimary">@color/purple_500</item>
-    <item name="colorPrimaryVariant">@color/purple_700</item>
+    <item name="colorPrimary">@color/green_50</item>
+    <item name="colorPrimaryVariant">@color/grey_100</item>
     <item name="colorOnPrimary">@color/white</item>
     <!-- Secondary brand color. -->
     <item name="colorSecondary">@color/teal_200</item>
     <item name="colorSecondaryVariant">@color/teal_700</item>
     <item name="colorOnSecondary">@color/black</item>
     <!-- Status bar color. -->
-    <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
     <!-- Customize your theme here. -->
+    <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
   </style>
+
+  <style name="RegularTextView" parent="android:Widget.TextView">
+    <item name="fontFamily">@font/poppins_regular</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">?attr/colorPrimaryVariant</item>
+  </style>
+
+  <style name="MediumTextView" parent="android:Widget.TextView">
+    <item name="fontFamily">@font/poppins_medium</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">?attr/colorPrimaryVariant</item>
+  </style>
+
+  <style name="SemiBoldTextView" parent="android:Widget.TextView">
+    <item name="fontFamily">@font/poppins_semibold</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">?attr/colorPrimaryVariant</item>
+  </style>
+
+  <style name="BoldTextView" parent="android:Widget.TextView">
+    <item name="fontFamily">@font/poppins_semibold</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:textColor">?attr/colorPrimaryVariant</item>
+  </style>
+
+  <style name="HeaderTextView" parent="android:Widget.TextView">
+    <item name="fontFamily">@font/roboto_bold</item>
+    <item name="android:textSize">24sp</item>
+    <item name="android:layout_marginEnd">?android:attr/actionBarSize</item>
+  </style>
+
+  <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+    <item name="spinBars">true</item>
+    <item name="color">@color/grey_100</item>
+  </style>
+
+  <style name="Theme.GuardianApp.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+
+  <style name="Theme.GuardianApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="Theme.GuardianApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
