@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.guardian.guardianapp.databinding.FragmentSettingsBinding
+import com.guardian.guardianapp.ui.AccountActivity
 import com.guardian.guardianapp.ui.ApplicationActivity
 
 class SettingsFragment : Fragment() {
@@ -22,11 +23,19 @@ class SettingsFragment : Fragment() {
   ): View {
     val settingsViewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
     _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-    binding.setApplication.setOnClickListener {
-      startActivity(Intent(activity, ApplicationActivity::class.java))
-    }
-
+    setUpListener()
     return binding.root
+  }
+
+  private fun setUpListener(){
+    binding.apply {
+      setAccount.setOnClickListener {
+        startActivity(Intent(activity, AccountActivity::class.java))
+      }
+      setApplication.setOnClickListener {
+        startActivity(Intent(activity, ApplicationActivity::class.java))
+      }
+    }
   }
 
   override fun onDestroyView() {

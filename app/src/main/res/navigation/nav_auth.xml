@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragmentSignin"
+    android:id="@+id/nav_auth">
+
+    <fragment android:id="@+id/fragmentSignin"
+        android:name="com.guardian.guardianapp.ui.authentication.signin.SignInFragment"
+        android:label="@string/sign_in"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_fragmentSignin_to_fragmentSignup"
+            app:destination="@id/fragmentSignup" />
+    </fragment>
+
+    <fragment android:id="@+id/fragmentSignup"
+        android:name="com.guardian.guardianapp.ui.authentication.signup.SignUpFragment"
+        android:label="@string/sign_up"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_fragmentSignup_to_fragmentSignin"
+            app:destination="@id/fragmentSignin"
+            app:popUpTo="@id/fragmentSignin"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

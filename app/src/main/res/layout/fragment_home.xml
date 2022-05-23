@@ -1,135 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".ui.home.HomeFragment">
-
-  <TextView
-    android:id="@+id/text_home"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    android:text=""
-    android:textAlignment="center"
-    android:textSize="20sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-  <RelativeLayout
-    android:id="@+id/relativeLayout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="185dp"
-    android:background="@drawable/bg_shadow"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-    <ImageButton
-      android:id="@+id/btn_record"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:background="?selectableItemBackgroundBorderless"
-      android:contentDescription="@string/record_now"
-      android:src="@drawable/ic_press_button_off" />
-
-    <LinearLayout
-      android:id="@+id/tv_press_to_record"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:orientation="horizontal">
-
-      <TextView
-        style="@style/BoldTextView"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/press"
-        android:textColor="@color/white" />
+        android:layout_marginBottom="185dp"
+        android:background="@drawable/bg_shadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-      <TextView
+        <ImageButton
+            android:id="@+id/btn_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/record_now"
+            android:src="@drawable/ic_press_button_off" />
+
+        <LinearLayout
+            android:id="@+id/tv_press_to_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/press"
+                android:textColor="@color/white" />
+
+            <TextView
+                style="@style/RegularTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/to_record"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tv_recording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recording"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/MediumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="@string/standby_mode"
+        app:layout_constraintStart_toStartOf="@+id/btn_take_picture"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:minHeight="48dp"
+        android:thumb="@drawable/ic_thumb"
+        android:track="@drawable/bg_switch"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/btn_take_picture"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:id="@+id/textView2"
         style="@style/RegularTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/to_record"
+        android:layout_marginTop="33dp"
+        android:text="@string/or"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btn_take_picture"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="43dp"
+        android:backgroundTint="@color/red_50"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/take_picture"
         android:textColor="@color/white"
-        android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-      android:id="@+id/tv_recording"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:orientation="horizontal"
-      android:visibility="invisible">
-
-      <TextView
-        style="@style/BoldTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/recording"
-        android:textColor="@color/white" />
-
-    </LinearLayout>
-  </RelativeLayout>
-
-  <TextView
-    android:id="@+id/textView"
-    style="@style/MediumTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="45dp"
-    android:text="@string/standby_mode"
-    app:layout_constraintStart_toStartOf="@+id/btn_take_picture"
-    app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
-
-  <Switch
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:checked="false"
-    android:minHeight="48dp"
-    android:thumb="@drawable/ic_thumb"
-    android:track="@drawable/bg_switch"
-    app:layout_constraintBottom_toBottomOf="@+id/textView"
-    app:layout_constraintEnd_toEndOf="@+id/btn_take_picture"
-    app:layout_constraintTop_toTopOf="@+id/textView"
-    tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-  <TextView
-    android:id="@+id/textView2"
-    style="@style/RegularTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="33dp"
-    android:text="@string/or"
-    android:textSize="20sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-  <androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/btn_take_picture"
-    style="@style/BoldTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="43dp"
-    android:background="@drawable/ic_btn_take_picture_off"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
-    android:text="@string/take_picture"
-    android:textAllCaps="false"
-    android:textColor="@color/white"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
