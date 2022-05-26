@@ -23,12 +23,19 @@
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2665" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2665" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2665" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_mesage.xml" value="0.1995" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_next_white_nooutline.xml" value="0.1995" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_night_icon.xml" value="0.1995" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_pencil.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_press_button_disable.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_press_button_enable.xml" value="0.23" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_press_button_off.xml" value="0.1995" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_press_button_on.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_setting.xml" value="0.2665" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_signout.xml" value="0.2665" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_switch_button_disable.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_switch_button_enable.xml" value="0.23" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_switch_button_on.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_thumb.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_track.xml" value="0.2665" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_track_icon.xml" value="0.2665" />
@@ -79,7 +86,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
