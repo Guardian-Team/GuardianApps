@@ -5,20 +5,33 @@
       <map>
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2665" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_border_edit_text.xml" value="0.353" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_btn_play_audio.xml" value="0.24" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_btn_take_picture.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_drawer.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_settings.xml" value="0.2895" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_shadow.xml" value="0.23" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_sign_in.xml" value="0.3245" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_sign_up.xml" value="0.3245" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_signin.xml" value="0.3245" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_signup.xml" value="0.3245" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/bg_switch.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/button_record.xml" value="0.23" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_account.xml" value="0.199" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_arrow.xml" value="0.3245" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_back_white.xml" value="0.3245" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_bg_drawer.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_btn_take_picture.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_btn_take_picture_off.xml" value="0.353" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_btn_take_picture_on.xml" value="0.353" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_call.xml" value="0.242" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_close.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_drawer.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_emergency.xml" value="0.2665" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_facebook.xml" value="0.199" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_google.xml" value="0.199" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_google_icon.xml" value="0.199" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_history.xml" value="0.2665" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_language.xml" value="0.3245" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1995" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2665" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2665" />
@@ -44,18 +57,23 @@
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/thumb_selector.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/drawable/track_selector.xml" value="0.23" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout-v23/fragment_home.xml" value="0.371875" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/activity_account.xml" value="0.22" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/activity_application.xml" value="0.25" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/activity_auth.xml" value="0.3671875" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/activity_home.xml" value="0.1" />
-        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/activity_main.xml" value="0.371875" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/activity_register_contacts.xml" value="0.33" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/app_bar_home.xml" value="0.22" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/content_home.xml" value="0.371875" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_gallery.xml" value="0.371875" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_history.xml" value="0.1" />
-        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_home.xml" value="0.25811001410437234" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_sign_in.xml" value="0.19114583333333332" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_sign_up.xml" value="0.19322916666666667" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/fragment_slideshow.xml" value="0.371875" />
-        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/item_row_user.xml" value="0.42718446601941745" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/item_row_audio.xml" value="0.2014388489208633" />
+        <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/item_row_user.xml" value="0.13500482160077146" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/layout/nav_header_home.xml" value="0.25" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="..\:/pem/AndroidStudio/00_Capstone/GuardianApps/app/src/main/res/menu/home.xml" value="0.371875" />

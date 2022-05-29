@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +16,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.FragmentHomeBinding
 import java.io.IOException
-
-private const val LOG_TAG = "AudioRecordTest"
-private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeFragment : Fragment() {
-  private var fileName: String = ""
+  private lateinit var fileName : String
 
   // Requesting permission to RECORD_AUDIO
   private var permissionToRecordAccepted = false
@@ -43,8 +43,7 @@ class HomeFragment : Fragment() {
     val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-    fileName = "${activity?.externalCacheDir?.absolutePath}/audiorecordtest.3gp"
-
+    // request permission to record audio
     activity?.let {
       ActivityCompat.requestPermissions(
         it,
@@ -53,36 +52,7 @@ class HomeFragment : Fragment() {
       )
     }
 
-    homeViewModel.text.observe(viewLifecycleOwner) {
-      binding.textHome.text = it
-    }
-
-    binding.btnRecord.setOnClickListener {
-      isPressed = !isPressed // reverse
-      onRecord(isPressed)
-      if (isPressed) {
-        binding.btnRecord.setImageResource(R.drawable.ic_press_button_on)
-        binding.tvPressToRecord.visibility = View.GONE
-        binding.tvRecording.visibility = View.VISIBLE
-      } else {
-        binding.btnRecord.setImageResource(R.drawable.ic_press_button_off)
-        binding.tvPressToRecord.visibility = View.VISIBLE
-        binding.tvRecording.visibility = View.GONE
-      }
-    }
-
-    // button play recording
-    binding.btnPlay.setOnClickListener {
-      isPlaying = !isPlaying
-      if(isPlaying){
-        onPlay(true)
-        binding.btnPlay.setText("Stop Playing")
-      } else{
-        onPlay(false)
-        binding.btnPlay.setText("Play")
-      }
-    }
-
+    buttonListener()
     return binding.root
   }
 
@@ -102,7 +72,32 @@ class HomeFragment : Fragment() {
     } else {
       false
     }
-    if (!permissionToRecordAccepted) Log.e("Record Permission : ","Permission to Record Not Accepted")
+    if (!permissionToRecordAccepted) Log.e(
+      LOG_PERMISSION_TAG,
+      " Permission to Record Not Accepted"
+    )
+  }
+
+  private fun buttonListener(){
+    binding.btnRecord.setOnClickListener {
+      isPressed = !isPressed // reverse
+      onRecord(isPressed)
+      if (isPressed) {
+        binding.btnRecord.setImageResource(R.drawable.ic_press_button_on)
+        binding.tvPressToRecord.visibility = View.GONE
+        binding.tvRecording.visibility = View.VISIBLE
+      } else {
+        binding.btnRecord.setImageResource(R.drawable.ic_press_button_off)
+        binding.tvPressToRecord.visibility = View.VISIBLE
+        binding.tvRecording.visibility = View.GONE
+      }
+    }
+  }
+
+  private fun setFileName(){
+    val now = Date()
+    val formatter = SimpleDateFormat("dd_MMM_yyyy_hh_mm_ss", Locale.getDefault())
+    fileName = "${activity?.getExternalFilesDir("/")?.absolutePath}/Record_${formatter.format(now)}.3gp"
   }
 
   private fun onRecord(start: Boolean) = if (start) {
@@ -111,52 +106,36 @@ class HomeFragment : Fragment() {
     stopRecording()
   }
 
-  private fun onPlay(start: Boolean) = if (start) {
-    startPlaying()
-  } else {
-    stopPlaying()
-  }
-
-  private fun startPlaying() {
-    player = MediaPlayer().apply {
-      try {
-        setDataSource(fileName)
-        prepare()
-        start()
-      } catch (e: IOException) {
-        Log.e(LOG_TAG, "prepare() failed")
-      }
-    }
-  }
-
-  private fun stopPlaying() {
-    player?.release()
-    player = null
-  }
 
   private fun startRecording() {
+    setFileName()
+
+    binding.chronometer.base = SystemClock.elapsedRealtime()
+    binding.chronometer.start()
+
     recorder = MediaRecorder().apply {
       setAudioSource(MediaRecorder.AudioSource.MIC)
       setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-      setOutputFile(fileName)
       setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+      setOutputFile(fileName)
 
       try {
         prepare()
       } catch (e: IOException) {
-        Log.e(LOG_TAG, "prepare() failed")
+        Log.e(LOG_AUDIO_TAG, "prepare() failed")
       }
-        start()
+      start()
     }
   }
 
   private fun stopRecording() {
+    binding.chronometer.stop()
     recorder?.apply {
-      try{
+      try {
         stop()
         release()
       } catch (e: IOException) {
-        Log.e(LOG_TAG, "release stop() failed")
+        Log.e(LOG_AUDIO_TAG, "release stop() failed")
       }
     }
     recorder = null
@@ -170,4 +149,9 @@ class HomeFragment : Fragment() {
     player = null
   }
 
+  companion object {
+    private const val LOG_AUDIO_TAG = "AudioRecordTest"
+    private const val LOG_PERMISSION_TAG = "RecordPermission"
+    private const val REQUEST_RECORD_AUDIO_PERMISSION = 21
+  }
 }

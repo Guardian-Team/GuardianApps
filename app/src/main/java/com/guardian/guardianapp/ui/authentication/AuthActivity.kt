@@ -1,49 +1,52 @@
 package com.guardian.guardianapp.ui.authentication
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.navigation.NavController
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.ActivityAuthBinding
-import com.guardian.guardianapp.databinding.ToolbarBinding
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("users")
 
 class AuthActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAuthBinding
-    private lateinit var navController: NavController
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityAuthBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        //init navhostcontroler
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_auth) as NavHostFragment
-        navController = navHostFragment.navController
-        setUpToolbar()
-    }
+  private lateinit var binding: ActivityAuthBinding
+  private lateinit var navController: NavController
 
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = ActivityAuthBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-    fun setUpToolbarVisibility(isSigup: Boolean){
-        if (isSigup){
-            binding.authToolbar.visibility = View.VISIBLE
-        }else if(isSigup == false){
-            binding.authToolbar.visibility = View.GONE
-        }
-    }
+    //init nav host controller
+    val navHostFragment = supportFragmentManager
+      .findFragmentById(R.id.nav_host_fragment_auth) as NavHostFragment
+    navController = navHostFragment.navController
+    setUpToolbar()
+  }
 
-    private fun setUpToolbar(){
-        setSupportActionBar(binding.authToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = ""
+  fun setUpToolbarVisibility(isSignUp: Boolean) {
+    if (isSignUp) {
+      binding.authToolbar.visibility = View.VISIBLE
+    } else {
+      binding.authToolbar.visibility = View.GONE
     }
+  }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
+  private fun setUpToolbar() {
+    setSupportActionBar(binding.authToolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    supportActionBar?.title = ""
+  }
+
+  override fun onSupportNavigateUp(): Boolean {
+    onBackPressed()
+    return true
+  }
 
 }

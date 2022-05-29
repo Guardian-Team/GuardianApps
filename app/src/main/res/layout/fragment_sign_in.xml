@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_signin">
+        android:background="@drawable/bg_sign_in">
 
         <TextView
             android:id="@+id/textView5"
@@ -53,14 +53,14 @@
             app:placeholderText="@string/email_ex">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputtextemail"
+                android:id="@+id/inputTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordInpuLayout"
+            android:id="@+id/passwordInputLayout"
             style="?attr/textInputOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,28 +76,28 @@
             app:layout_constraintTop_toBottomOf="@+id/emailInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputtextpass"
+                android:id="@+id/inputTextPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:maxLength="20" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <RelativeLayout
-            android:id="@+id/containerforgot"
+        <FrameLayout
+            android:id="@+id/containerForgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInpuLayout">
+            app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout">
 
             <TextView
                 style="@style/RegularTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/forgot_password" />
-        </RelativeLayout>
+        </FrameLayout>
 
         <TextView
             style="@style/HeaderTextView"
@@ -105,33 +105,34 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/sign_in"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_signin"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_signIn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_signin" />
+            app:layout_constraintTop_toTopOf="@+id/btn_signIn" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_signin"
+            android:id="@+id/btn_signIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/grey_100"
-            android:src="@drawable/arrow"
+            android:src="@drawable/ic_arrow"
             app:fabCustomSize="85dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/containerforgot"
-            app:tint="@color/white" />
+            app:layout_constraintTop_toBottomOf="@+id/containerForgot"
+            app:tint="@color/white"
+          android:contentDescription="@string/sign_in" />
 
         <TextView
             android:id="@+id/textView7"
             style="@style/SemiBoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="or"
+            android:text="@string/or"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_signIn" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_google"
@@ -149,7 +150,7 @@
             android:layout_height="35dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/ic_googe"
+            android:background="@drawable/ic_google"
             app:layout_constraintEnd_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 

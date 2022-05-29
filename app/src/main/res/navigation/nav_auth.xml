@@ -2,15 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/fragmentSignin"
+    app:startDestination="@id/fragmentSignIn"
     android:id="@+id/nav_auth">
 
-    <fragment android:id="@+id/fragmentSignin"
+    <fragment android:id="@+id/fragmentSignIn"
         android:name="com.guardian.guardianapp.ui.authentication.signin.SignInFragment"
         android:label="@string/sign_in"
         tools:layout="@layout/fragment_sign_in">
         <action
-            android:id="@+id/action_fragmentSignin_to_fragmentSignup"
+            android:id="@+id/action_fragmentSignIn_to_fragmentSignUp"
             app:destination="@id/fragmentSignup" />
     </fragment>
 
@@ -19,9 +19,9 @@
         android:label="@string/sign_up"
         tools:layout="@layout/fragment_sign_up">
         <action
-            android:id="@+id/action_fragmentSignup_to_fragmentSignin"
-            app:destination="@id/fragmentSignin"
-            app:popUpTo="@id/fragmentSignin"
+            android:id="@+id/action_fragmentSignUp_to_fragmentSignIn"
+            app:destination="@id/fragmentSignIn"
+            app:popUpTo="@id/fragmentSignIn"
             app:popUpToInclusive="true" />
     </fragment>
 

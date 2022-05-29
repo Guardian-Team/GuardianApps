@@ -23,11 +23,11 @@ class SettingsFragment : Fragment() {
   ): View {
     val settingsViewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
     _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-    setUpListener()
+    setupListener()
     return binding.root
   }
 
-  private fun setUpListener(){
+  private fun setupListener(){
     binding.apply {
       setAccount.setOnClickListener {
         startActivity(Intent(activity, AccountActivity::class.java))
