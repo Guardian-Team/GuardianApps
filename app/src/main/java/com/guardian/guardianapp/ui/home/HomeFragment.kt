@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.FragmentHomeBinding
 import java.io.IOException
@@ -53,6 +54,7 @@ class HomeFragment : Fragment() {
     }
 
     buttonListener()
+
     return binding.root
   }
 
@@ -91,6 +93,10 @@ class HomeFragment : Fragment() {
         binding.tvPressToRecord.visibility = View.VISIBLE
         binding.tvRecording.visibility = View.GONE
       }
+    }
+
+    binding.btnHistory.setOnClickListener {
+      findNavController().navigate(R.id.action_nav_home_to_nav_history)
     }
   }
 
