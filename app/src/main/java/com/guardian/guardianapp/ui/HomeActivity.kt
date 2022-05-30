@@ -49,6 +49,8 @@ class HomeActivity : AppCompatActivity() {
     setupActionBarWithNavController(navController, appBarConfiguration)
     binding.navView.setupWithNavController(navController)
 
+
+
     val headerView = binding.navView.getHeaderView(0)
     val navUsername : TextView = headerView.findViewById(R.id.username)
     val btnClose : ImageView = headerView.findViewById(R.id.btn_close)
