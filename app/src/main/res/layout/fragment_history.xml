@@ -9,7 +9,7 @@
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rv_audio_files"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginTop="60dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -29,4 +29,5 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

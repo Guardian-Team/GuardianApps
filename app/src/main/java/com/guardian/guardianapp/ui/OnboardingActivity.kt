@@ -1,9 +1,8 @@
 package com.guardian.guardianapp.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.guardian.guardianapp.R
+import androidx.appcompat.app.AppCompatActivity
 import com.guardian.guardianapp.databinding.ActivityOnboardingBinding
 import com.guardian.guardianapp.ui.authentication.AuthActivity
 

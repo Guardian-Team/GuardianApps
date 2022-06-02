@@ -6,16 +6,7 @@
   android:layout_height="match_parent"
   tools:context=".ui.home.HomeFragment">
 
-  <ImageButton
-      android:id="@+id/btn_history"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="32dp"
-      android:layout_marginEnd="16dp"
-      android:background="?selectableItemBackgroundBorderless"
-      android:src="@drawable/ic_history"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+
 
   <LinearLayout
     android:id="@+id/relativeLayout"
@@ -105,6 +96,7 @@
     app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
   <Switch
+    android:id="@+id/switch_standby_mode"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:checked="false"
@@ -144,5 +136,16 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent" />
+
+  <ImageButton
+    android:id="@+id/btn_history"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:layout_marginEnd="16dp"
+    android:background="?selectableItemBackgroundBorderless"
+    android:src="@drawable/ic_history"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
