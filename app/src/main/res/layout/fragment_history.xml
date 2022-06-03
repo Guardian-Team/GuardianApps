@@ -4,6 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/bg_settings"
   tools:context=".ui.history.HistoryFragment">
 
   <androidx.recyclerview.widget.RecyclerView
@@ -16,18 +17,30 @@
     app:layout_constraintTop_toTopOf="parent"
     tools:listitem="@layout/item_row_audio" />
 
-  <TextView
-    android:id="@+id/tv_no_audio_recorded"
-    style="@style/BoldTextView"
+  <LinearLayout
+    android:id="@+id/no_audio_recorded"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="60dp"
-    android:text="@string/no_audio_recorded"
+    android:orientation="vertical"
     android:visibility="invisible"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:visibility="visible" />
+    tools:visibility="visible">
+
+    <ImageView
+      android:layout_width="200dp"
+      android:layout_height="200dp"
+      android:contentDescription="@string/no_audio_recorded"
+      android:src="@drawable/ic_no_history" />
+
+    <TextView
+      style="@style/BoldTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text="@string/no_audio_recorded" />
+  </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

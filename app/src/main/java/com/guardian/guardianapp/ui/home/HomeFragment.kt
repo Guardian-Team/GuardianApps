@@ -90,6 +90,7 @@ class HomeFragment : Fragment() {
         speech.stopListening()
       }
     }
+
   }
 
   private fun changeRecordButton(isPressed: Boolean) {
@@ -106,7 +107,7 @@ class HomeFragment : Fragment() {
 
   private fun setFileName() {
     val now = Date()
-    val formatter = SimpleDateFormat("dd_MMM_yyyy_hh_mm_ss", Locale.getDefault())
+    val formatter = SimpleDateFormat("dd.MMM.yyyy_hhmmsss", Locale.getDefault())
     fileName =
       "${activity?.getExternalFilesDir("/")?.absolutePath}/Record_${formatter.format(now)}.3gp"
   }

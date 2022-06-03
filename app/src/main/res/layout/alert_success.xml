@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:background="@color/black">
+
+  <View
+    android:id="@+id/view3"
+    android:layout_width="wrap_content"
+    android:layout_height="190dp"
+    android:background="@drawable/bg_alert"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/view" />
+
+  <View
+    android:id="@+id/view"
+    android:layout_width="wrap_content"
+    android:layout_height="108dp"
+    android:background="@drawable/bg_alert_success"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:contentDescription="@string/warning"
+    android:src="@drawable/ic_success"
+    app:layout_constraintBottom_toBottomOf="@+id/view"
+    app:layout_constraintEnd_toEndOf="@+id/view"
+    app:layout_constraintStart_toStartOf="@+id/view"
+    app:layout_constraintTop_toTopOf="@+id/view3" />
+
+  <TextView
+    android:id="@+id/textView13"
+    style="@style/BoldTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:text="@string/success_"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="@+id/view3"
+    app:layout_constraintStart_toStartOf="@+id/view3"
+    app:layout_constraintTop_toBottomOf="@+id/view" />
+
+  <TextView
+    style="@style/RegularTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/file_has_been_deleted"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="@+id/view3"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="@+id/view3"
+    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+  <ImageButton
+    android:id="@+id/btn_close_alert_success"
+    style="@style/customButton"
+    android:layout_width="wrap_content"
+    android:layout_height="25dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    android:background="?selectableItemBackgroundBorderless"
+    android:fontFamily="@font/poppins_bold"
+    android:insetBottom="0dp"
+    android:padding="0dp"
+    android:src="@drawable/ic_close_white"
+    android:text="@string/no"
+    android:textSize="20sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:contentDescription="@string/close_dialog" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

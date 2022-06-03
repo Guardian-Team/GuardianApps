@@ -62,8 +62,16 @@
     <string name="acc_created">Yayyy!, Account Created!</string>
     <string name="save">Save Edit</string>
     <string name="edit_photo_profile">change photo profile</string>
-    <string name="no_audio_recorded">No Audio Recorded</string>
+    <string name="no_audio_recorded">Oppsss…\nNo History Founds!</string>
     <string name="play_audio">play audio</string>
     <string name="the_same_experience_as">The same experience as being guarded by a bodyguard</string>
     <string name="get_started2">Get Started</string>
+  <string name="delete_audio">delete audio</string>
+  <string name="are_you_sure_want_to_delete">Are you sure want to delete?</string>
+    <string name="no">No</string>
+  <string name="yes">Yes</string>
+    <string name="warning">warning</string>
+  <string name="success_">Success!!</string>
+    <string name="file_has_been_deleted">File has been Deleted</string>
+    <string name="close_dialog">close dialog</string>
 </resources>

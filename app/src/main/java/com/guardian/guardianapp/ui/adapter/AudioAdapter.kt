@@ -30,7 +30,8 @@ class AudioAdapter(
   override fun getItemCount(): Int = files?.size!!
 
   interface OnItemClickCallback {
-    fun onItemClicked(data: File, bindingAdapter :ItemRowAudioBinding)
+    fun onBtnPlayClicked(data: File, bindingAdapter :ItemRowAudioBinding)
+    fun onBtnDeleteClicked(data: File)
   }
 
   inner class AudioViewHolder(private val binding: ItemRowAudioBinding) :
@@ -50,7 +51,10 @@ class AudioAdapter(
         tvTime.text = tempString
 
         btnPlayAudio.setOnClickListener {
-          listener.onItemClicked(file, binding)
+          listener.onBtnPlayClicked(file, binding)
+        }
+        btnDelete.setOnClickListener {
+          listener.onBtnDeleteClicked(file)
         }
       }
     }
