@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.FragmentHomeBinding
+import com.guardian.guardianapp.ui.CameraActivity
 import com.guardian.guardianapp.utils.Helper
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -91,6 +92,10 @@ class HomeFragment : Fragment() {
       }
     }
 
+    binding.btnTakePicture.setOnClickListener {
+      val intent = Intent(activity, CameraActivity::class.java)
+      startActivity(intent)
+    }
   }
 
   private fun changeRecordButton(isPressed: Boolean) {
@@ -193,7 +198,7 @@ class HomeFragment : Fragment() {
             speech.stopListening()
           } else {
             matches.firstOrNull {
-              it.contains(activationKeyword,  true)
+              it.contains(activationKeyword, true)
             }.let {
               isActivated = true
               isPressed = !isPressed // reverse
@@ -209,7 +214,6 @@ class HomeFragment : Fragment() {
 
       override fun onEvent(i: Int, bundle: Bundle) {}
     })
-
 
   }
 
