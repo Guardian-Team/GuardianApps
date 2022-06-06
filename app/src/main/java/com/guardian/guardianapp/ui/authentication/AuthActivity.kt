@@ -44,6 +44,10 @@ class AuthActivity : AppCompatActivity() {
     supportActionBar?.title = ""
   }
 
+  fun getDataStore(): DataStore<Preferences>{
+    return dataStore
+  }
+
   override fun onSupportNavigateUp(): Boolean {
     onBackPressed()
     return true

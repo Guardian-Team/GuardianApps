@@ -11,7 +11,10 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
     return dataStore.data.map {
       UserModel(
         it[NAME_KEY] ?: "",
+        it[EMAIL_KEY] ?: "",
+        it[ID_KEY] ?: 0,
         it[TOKEN_KEY] ?: "",
+        it[ISLOGIN_KEY] ?: false
       )
     }
   }
@@ -19,14 +22,20 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
   suspend fun saveUser(user: UserModel) {
     dataStore.edit {
       it[NAME_KEY] = user.name
+      it[EMAIL_KEY] = user.email
+      it[ID_KEY] = user.userid
       it[TOKEN_KEY] = user.token
+      it[ISLOGIN_KEY] = user.islogin
     }
   }
 
   suspend fun logout() {
     dataStore.edit {
       it[NAME_KEY] = ""
+      it[EMAIL_KEY] = ""
+      it[ID_KEY] = 0
       it[TOKEN_KEY] = ""
+      it[ISLOGIN_KEY] = false
     }
   }
 
@@ -36,6 +45,10 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
 
     private val NAME_KEY = stringPreferencesKey("name")
     private val TOKEN_KEY = stringPreferencesKey("token")
+    private val EMAIL_KEY = stringPreferencesKey("email")
+    private val ID_KEY = intPreferencesKey("userid")
+    private val ISLOGIN_KEY = booleanPreferencesKey("islogin")
+
 
     fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
       return INSTANCE ?: synchronized(this) {

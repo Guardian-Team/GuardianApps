@@ -60,6 +60,8 @@ dependencies {
 
   //Image library
   implementation 'de.hdodenhof:circleimageview:3.1.0'
+  implementation 'com.github.bumptech.glide:glide:4.13.1'
+  annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
   //test
   testImplementation 'junit:junit:4.13.2'
@@ -78,5 +80,10 @@ dependencies {
   implementation "androidx.camera:camera-camera2:${camerax_version}"
   implementation "androidx.camera:camera-lifecycle:${camerax_version}"
   implementation "androidx.camera:camera-view:${camerax_version}"
+
+  //Retrofit
+  implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+  implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+  implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7"
 
 }
