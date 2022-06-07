@@ -37,7 +37,7 @@
     <string name="registered_contacts">Registered Contacts</string>
     <string name="sos_message">SOS Message</string>
     <string name="send_location">Send Location</string>
-    <string name="help_me">Help Me!, I am in Danger... Hurry Up!</string>
+    <string name="help_me">Help Me!, I am in Danger… Hurry Up!</string>
     <string name="save_settings">Save Settings</string>
     <string name="close_navigation_drawer">close navigation drawer</string>
     <string name="welcome_to">Welcome to</string>
@@ -48,7 +48,7 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
-    <string name="invalid_password">Password must be more than 6 characters</string>
+    <string name="invalid_password">Password must be more than 8 characters</string>
     <string name="invalid_email">Enter email correctly!</string>
     <string name="required">Required!</string>
     <string name="hello">Hello!</string>
@@ -57,6 +57,7 @@
     <string name="name">Name</string>
     <string name="phone">Phone</string>
     <string name="id_phone">+62</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="acc_created">Yayyy!, Account Created!</string>
@@ -81,4 +82,8 @@
     <string name="field_login_empty">Email or Password cannot be empty!</string>
     <string name="google">Google</string>
     <string name="facebook">Facebook</string>
+    <string name="press_to_capture_image">press to capture image</string>
+  <string name="available_soon">Available soon!</string>
+  <string name="violence">Violence</string>
+    <string name="not_violence">Not Violence</string>
 </resources>

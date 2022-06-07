@@ -9,7 +9,7 @@
   <androidx.camera.view.PreviewView
     android:id="@+id/viewFinder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"/>
 
   <ImageButton
     android:id="@+id/btn_image_capture"
@@ -20,6 +20,8 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:srcCompat="@drawable/ic_capture" />
+    app:srcCompat="@drawable/ic_capture"
+    android:contentDescription="@string/press_to_capture_image" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

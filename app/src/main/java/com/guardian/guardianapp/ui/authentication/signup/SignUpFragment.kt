@@ -1,26 +1,18 @@
 package com.guardian.guardianapp.ui.authentication.signup
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.guardian.guardianapp.R
-import com.guardian.guardianapp.databinding.FragmentHistoryBinding
 import com.guardian.guardianapp.databinding.FragmentSignUpBinding
 import com.guardian.guardianapp.ui.authentication.AuthActivity
-import com.guardian.guardianapp.ui.history.HistoryViewModel
 import com.guardian.guardianapp.utils.Helper
-
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("users")
 
 class SignUpFragment : Fragment() {
     private var _binding: FragmentSignUpBinding? = null
@@ -61,7 +53,7 @@ class SignUpFragment : Fragment() {
 
             inputTextPass.doOnTextChanged { text, _, _, _ ->
                 if (text != null) {
-                    if (text.length < 6) {
+                    if (text.length < 8) {
                         passInputLayout.error = getString(R.string.invalid_password)
                     } else {
                         passInputLayout.error = null

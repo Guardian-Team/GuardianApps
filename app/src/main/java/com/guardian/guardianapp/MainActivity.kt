@@ -3,7 +3,8 @@ package com.guardian.guardianapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.datastore.core.DataStore
@@ -20,8 +21,8 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("u
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProvider(
@@ -29,13 +30,22 @@ class MainActivity : AppCompatActivity() {
             ViewModelFactory(UserPreference.getInstance(dataStore))
         )[MainViewModel::class.java]
 
-        viewModel.getUser().observe(this){
-            if (it.islogin){
-                startActivity(Intent(this, HomeActivity::class.java))
-                finishAffinity()
-            }else{
-                startActivity(Intent(this, OnboardingActivity::class.java))
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            viewModel.getUser().observe(this){
+                if (it.islogin){
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finishAffinity()
+                }else{
+                    startActivity(Intent(this, OnboardingActivity::class.java))
+                    finishAffinity()
+                }
             }
-        }
+        }, DELAY_TIME)
+
+    }
+
+    companion object {
+        const val DELAY_TIME = 500L
     }
 }

@@ -13,6 +13,8 @@
     <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
     <!-- Customize your theme here. -->
     <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+    <item name="colorControlActivated">@color/red_50</item>
   </style>
 
   <style name="RegularTextView" parent="android:Widget.TextView">
@@ -53,6 +55,7 @@
   <style name="Theme.App.Starting" parent="Theme.SplashScreen">
     <item name="windowSplashScreenBackground">?attr/colorPrimary</item>
     <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+    <item name="windowSplashScreenAnimationDuration">300</item>
     <item name="postSplashScreenTheme">@style/Theme.GuardianApp</item>
   </style>
 

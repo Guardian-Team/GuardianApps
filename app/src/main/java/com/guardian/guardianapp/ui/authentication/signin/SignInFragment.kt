@@ -90,13 +90,13 @@ class SignInFragment : Fragment() {
                 findNavController().navigate(R.id.action_fragmentSignIn_to_fragmentSignUp)
             }
             btnGoogle.setOnClickListener {
-                Helper.showToastLong(activity, "Available soon!")
+                Helper.showToastLong(activity, getString(R.string.available_soon))
             }
             btnFacebook.setOnClickListener {
-                Helper.showToastLong(activity, "Available soon!")
+                Helper.showToastLong(activity, getString(R.string.available_soon))
             }
             containerForgot.setOnClickListener{
-                Helper.showToastLong(activity, "Available soon!")
+                Helper.showToastLong(activity, getString(R.string.available_soon))
             }
         }
     }

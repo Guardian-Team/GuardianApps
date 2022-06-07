@@ -2,9 +2,11 @@ package com.guardian.guardianapp.ui
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +19,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.ActivityCameraBinding
+import com.guardian.guardianapp.ui.ImageResultActivity.Companion.EXTRA_PATH_IMAGE
 import com.guardian.guardianapp.utils.Helper
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -79,12 +83,25 @@ class CameraActivity : AppCompatActivity() {
 
         override fun
           onImageSaved(output: ImageCapture.OutputFileResults) {
-          val msg = "Photo capture succeeded: ${output.savedUri}"
+
+          val path: File = Environment.getExternalStorageDirectory()
+          val pathImage = "$path/Pictures/GuardianApps/$name.jpg"
+
+          val msg = "Photo capture succeeded: ${output.savedUri}/"
           Helper.showToastShort(baseContext, msg)
           Log.d(TAG, msg)
+
+          gotoImageResult(pathImage)
         }
       }
     )
+  }
+
+  private fun gotoImageResult(bitmap: String) {
+    val moveToResult = Intent(this, ImageResultActivity::class.java)
+    moveToResult.putExtra(EXTRA_PATH_IMAGE, bitmap)
+    startActivity(moveToResult)
+    finish()
   }
 
   private fun startCamera() {
@@ -108,7 +125,7 @@ class CameraActivity : AppCompatActivity() {
           imageCapture
         )
       } catch (exc: Exception) {
-        Helper.showToastShort(this,getString(R.string.failed_open_camera))
+        Helper.showToastShort(this, getString(R.string.failed_open_camera))
       }
     }, ContextCompat.getMainExecutor(this))
   }
@@ -145,7 +162,8 @@ class CameraActivity : AppCompatActivity() {
     private const val REQUEST_CODE_PERMISSIONS = 10
     private val REQUIRED_PERMISSIONS =
       mutableListOf(
-        Manifest.permission.CAMERA
+        Manifest.permission.CAMERA,
+        Manifest.permission.READ_EXTERNAL_STORAGE
       ).apply {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
           add(Manifest.permission.WRITE_EXTERNAL_STORAGE)

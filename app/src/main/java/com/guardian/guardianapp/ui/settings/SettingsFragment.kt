@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.FragmentSettingsBinding
 import com.guardian.guardianapp.ui.AccountActivity
 import com.guardian.guardianapp.ui.ApplicationActivity
+import com.guardian.guardianapp.utils.Helper
 
 class SettingsFragment : Fragment() {
 
@@ -34,6 +36,18 @@ class SettingsFragment : Fragment() {
       }
       setApplication.setOnClickListener {
         startActivity(Intent(activity, ApplicationActivity::class.java))
+      }
+      setAboutUs.setOnClickListener {
+        Helper.showToastLong(activity, getString(R.string.available_soon))
+      }
+      setHelpSupport.setOnClickListener {
+        Helper.showToastLong(activity, getString(R.string.available_soon))
+      }
+      setLanguage.setOnClickListener {
+        Helper.showToastLong(activity, getString(R.string.available_soon))
+      }
+      setTheme.setOnClickListener {
+        Helper.showToastLong(activity, getString(R.string.available_soon))
       }
     }
   }

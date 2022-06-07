@@ -45,7 +45,6 @@ class HomeActivity : AppCompatActivity() {
     )
     setViewModel()
     setupNavigation()
-
   }
 
   override fun onSupportNavigateUp(): Boolean {
@@ -63,8 +62,6 @@ class HomeActivity : AppCompatActivity() {
     val navController = findNavController(R.id.nav_host_fragment_content_home)
     setupActionBarWithNavController(navController, appBarConfiguration)
     binding.navView.setupWithNavController(navController)
-
-
 
     val headerView = binding.navView.getHeaderView(0)
     val navUsername : TextView = headerView.findViewById(R.id.username)
