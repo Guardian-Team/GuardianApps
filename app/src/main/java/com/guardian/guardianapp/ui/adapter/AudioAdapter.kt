@@ -47,7 +47,7 @@ class AudioAdapter(
           metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)!!.toLong()
         val tempString =
           Date(file.lastModified()).toString().split("GMT")[0] +
-            " | ${SimpleDateFormat("mm:ss", Locale.getDefault()).format(Date(duration))}"
+                  " | ${SimpleDateFormat("mm:ss", Locale.getDefault()).format(Date(duration))}"
         tvTime.text = tempString
 
         btnPlayAudio.setOnClickListener {
