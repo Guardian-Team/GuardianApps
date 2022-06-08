@@ -94,6 +94,8 @@
         <entry key="app/src/main/res/drawable/ic_switch_button_on.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_thumb.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_track.xml" value="0.1175" />
+        <entry key="app/src/main/res/drawable/ic_trash_off.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_trash_on.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/toggle_play.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_application.xml" value="0.17528858486532706" />
@@ -111,7 +113,7 @@
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_row_history.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_row_user.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_row_user.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_home.xml" value="0.1" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.21354166666666666" />
       </map>
