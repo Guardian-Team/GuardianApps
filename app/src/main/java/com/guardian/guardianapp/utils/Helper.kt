@@ -1,12 +1,26 @@
 package com.guardian.guardianapp.utils
 
+import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.net.Uri
+import android.os.Environment
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import java.io.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Helper {
+  private const val FILENAME_FORMAT = "dd-MMM-yyyy"
+
+  private val timeStamp: String = SimpleDateFormat(
+    FILENAME_FORMAT,
+    Locale.US
+  ).format(System.currentTimeMillis())
+
   fun showToastShort(context: Context, text: String) {
     Toast.makeText(
       context,
@@ -49,5 +63,40 @@ object Helper {
         true
       )
     }
+  }
+
+  private fun tempFile(context: Context): File {
+    val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    return File.createTempFile(timeStamp, ".jpg", storageDir)
+  }
+
+  fun converterUri(selectedImg: Uri, context: Context): File {
+    val contentResolver: ContentResolver = context.contentResolver
+    val myFile = tempFile(context)
+
+    val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
+    val outputStream: OutputStream = FileOutputStream(myFile)
+    val buf = ByteArray(1024)
+    var len: Int
+    while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+    outputStream.close()
+    inputStream.close()
+
+    return myFile
+  }
+
+  fun compressImg(file: File): File {
+    val imgbitmap = BitmapFactory.decodeFile(file.path)
+    var compressQuality = 100
+    var streamLength: Int
+    do {
+      val imgbmpStream = ByteArrayOutputStream()
+      imgbitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, imgbmpStream)
+      val bmpPicByteArray = imgbmpStream.toByteArray()
+      streamLength = bmpPicByteArray.size
+      compressQuality -= 5
+    } while (streamLength > 1000000)
+    imgbitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
+    return file
   }
 }

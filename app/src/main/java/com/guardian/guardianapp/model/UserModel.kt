@@ -9,5 +9,6 @@ data class UserModel(
   val email: String,
   val userid: Int,
   val token: String,
-  val islogin: Boolean
+  val islogin: Boolean,
+  val isfirstinstall: Boolean
 ): Parcelable

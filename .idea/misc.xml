@@ -95,7 +95,9 @@
         <entry key="app/src/main/res/drawable/ic_thumb.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_track.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/toggle_play.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_account.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_application.xml" value="0.17528858486532706" />
+        <entry key="app/src/main/res/layout/activity_auth.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17528858486532706" />
         <entry key="app/src/main/res/layout/activity_on_boarding.xml" value="0.1" />

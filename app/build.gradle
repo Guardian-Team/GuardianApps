@@ -62,7 +62,7 @@ dependencies {
   //Image library
   implementation 'de.hdodenhof:circleimageview:3.1.0'
   implementation 'com.github.bumptech.glide:glide:4.13.1'
-  annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+  kapt 'com.github.bumptech.glide:compiler:4.13.0'
 
   //test
   testImplementation 'junit:junit:4.13.2'
@@ -71,7 +71,7 @@ dependencies {
 
   //google maps
   implementation 'com.google.android.gms:play-services-maps:18.0.2'
-  implementation "com.google.android.gms:play-services-location:19.0.1"
+  implementation "com.google.android.gms:play-services-location:20.0.0"
 
   //splash screen
   implementation 'androidx.core:core-splashscreen:1.0.0-rc01'

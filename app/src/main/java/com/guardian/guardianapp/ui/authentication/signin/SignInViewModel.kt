@@ -15,52 +15,53 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignInViewModel(private val pref: UserPreference): ViewModel() {
-  private val resultResponse = MutableLiveData<Boolean>()
-  private val _isLoading = MutableLiveData<Boolean>()
-  val isLoading: LiveData<Boolean> = _isLoading
+class SignInViewModel(private val pref: UserPreference) : ViewModel() {
+    private val resultResponse = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
-  fun postLogin(email: String, password: String) {
-    _isLoading.value = true
-    val client = ApiConfig.getAuthApi.postLogin(email, password)
-    client.enqueue(object : Callback<LoginResponse> {
-      override fun onResponse(
-        call: Call<LoginResponse>,
-        response: Response<LoginResponse>
-      ) {
-        _isLoading.value = false
-        resultResponse.value = response.isSuccessful
+    fun postLogin(email: String, password: String) {
+        _isLoading.value = true
+        val client = ApiConfig.getAuthApi.postLogin(email, password)
+        client.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                _isLoading.value = false
+                resultResponse.value = response.isSuccessful
 
-        if (response.isSuccessful){
-          val responseBody = response.body()
-          if (response.body() != null){
-            val model = UserModel(
-              responseBody!!.data.name,
-              email,
-              responseBody.data.id,
-              responseBody.data.token,
-              true
-            )
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (response.body() != null) {
+                        val model = UserModel(
+                            responseBody!!.data.name,
+                            email,
+                            responseBody.data.id,
+                            responseBody.data.token,
+                            islogin = true,
+                            isfirstinstall = false
+                        )
 
-            saveUser(model)
-          }
-        }
-      }
+                        saveUser(model)
+                    }
+                }
+            }
 
-      override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-        _isLoading.value = false
-        Log.e(ContentValues.TAG, "onFailure: ${t.message}")
-      }
-    })
-  }
-
-  fun getResultResponse(): LiveData<Boolean> {
-    return resultResponse
-  }
-
-  fun saveUser(user: UserModel) {
-    viewModelScope.launch {
-      pref.saveUser(user)
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+        })
     }
-  }
+
+    fun getResultResponse(): LiveData<Boolean> {
+        return resultResponse
+    }
+
+    fun saveUser(user: UserModel) {
+        viewModelScope.launch {
+            pref.saveUser(user)
+        }
+    }
 }
