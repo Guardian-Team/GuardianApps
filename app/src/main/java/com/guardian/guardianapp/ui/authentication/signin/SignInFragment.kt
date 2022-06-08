@@ -43,7 +43,7 @@ class SignInFragment : Fragment() {
         binding.apply {
             inputTextPass.doOnTextChanged { text, _, _, _ ->
                 if (text != null) {
-                    if (text.length < 6) {
+                    if (text.length < 8) {
                         passwordInputLayout.error = getString(R.string.invalid_password)
                     } else {
                         passwordInputLayout.error = null

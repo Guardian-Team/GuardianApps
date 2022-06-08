@@ -15,6 +15,7 @@ import com.guardian.guardianapp.model.UserPreference
 import com.guardian.guardianapp.model.ViewModelFactory
 import com.guardian.guardianapp.ui.HomeActivity
 import com.guardian.guardianapp.ui.OnboardingActivity
+import com.guardian.guardianapp.ui.authentication.AuthActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("users")
 
@@ -32,13 +33,16 @@ class MainActivity : AppCompatActivity() {
 
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            viewModel.getUser().observe(this){
-                if (it.islogin){
+            viewModel.getUser().observe(this) {
+                if (it.islogin) {
                     startActivity(Intent(this, HomeActivity::class.java))
                     finishAffinity()
-                }else{
+                } else if (!it.islogin && it.isfirstinstall) {
                     startActivity(Intent(this, OnboardingActivity::class.java))
                     finishAffinity()
+                } else {
+                startActivity(Intent(this, AuthActivity::class.java))
+                finishAffinity()
                 }
             }
         }, DELAY_TIME)

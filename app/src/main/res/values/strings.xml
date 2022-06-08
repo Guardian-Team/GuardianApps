@@ -86,4 +86,9 @@
   <string name="available_soon">Available soon!</string>
   <string name="violence">Violence</string>
     <string name="not_violence">Not Violence</string>
+    <string name="not_granted">Not getting Permission</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_email">Your Email</string>
+    <string name="your_phone_number">Your Phone Number</string>
+    <string name="onboarding_image">Onboarding Image</string>
 </resources>

@@ -14,7 +14,8 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
         it[EMAIL_KEY] ?: "",
         it[ID_KEY] ?: 0,
         it[TOKEN_KEY] ?: "",
-        it[ISLOGIN_KEY] ?: false
+        it[ISLOGIN_KEY] ?: false,
+        it[ISFIRSTINSTALL] ?: true
       )
     }
   }
@@ -26,6 +27,7 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
       it[ID_KEY] = user.userid
       it[TOKEN_KEY] = user.token
       it[ISLOGIN_KEY] = user.islogin
+      it[ISFIRSTINSTALL] = user.isfirstinstall
     }
   }
 
@@ -48,6 +50,7 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
     private val EMAIL_KEY = stringPreferencesKey("email")
     private val ID_KEY = intPreferencesKey("userid")
     private val ISLOGIN_KEY = booleanPreferencesKey("islogin")
+    private val ISFIRSTINSTALL = booleanPreferencesKey("isfirst")
 
 
     fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
