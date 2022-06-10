@@ -31,6 +31,20 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
     }
   }
 
+  fun getUserSettings(): Flow<SettingsModel> {
+    return dataStore.data.map {
+      SettingsModel(
+        it[SOS_MSG_KEY] ?: ""
+      )
+    }
+  }
+
+  suspend fun saveUserSettings(userSetting: SettingsModel) {
+    dataStore.edit {
+      it[SOS_MSG_KEY] = userSetting.msgSos
+    }
+  }
+
   suspend fun logout() {
     dataStore.edit {
       it[NAME_KEY] = ""
@@ -51,6 +65,7 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
     private val ID_KEY = intPreferencesKey("userid")
     private val ISLOGIN_KEY = booleanPreferencesKey("islogin")
     private val ISFIRSTINSTALL = booleanPreferencesKey("isfirst")
+    private val SOS_MSG_KEY = stringPreferencesKey("sosMsg")
 
 
     fun getInstance(dataStore: DataStore<Preferences>): UserPreference {

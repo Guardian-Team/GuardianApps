@@ -1,28 +1,47 @@
 package com.guardian.guardianapp.ui.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.ItemRowUserBinding
 import com.guardian.guardianapp.source.remote.response.DataItem
 
 class RegisterContactAdapter : RecyclerView.Adapter<RegisterContactAdapter.ViewHolder>() {
+    private val listContact = ArrayList<DataItem>()
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface  OnItemClickCallback{
+        fun onItemClicked(data: DataItem)
+    }
+
+    fun setListContact(itemContact: List<DataItem>){
+//        val diffCall = DiffCallback(listContact, itemContact)
+//        val result = DiffUtil.calculateDiff(diffCall)
+
+        listContact.clear()
+        listContact.addAll(itemContact)
+        notifyDataSetChanged()
+//        result.dispatchUpdatesTo(this)
+    }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): RegisterContactAdapter.ViewHolder {
-        TODO("Not yet implemented")
+        val binding = ItemRowUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RegisterContactAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(listContact[position])
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = listContact.size
+
 
     inner class ViewHolder(private var binding: ItemRowUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -31,20 +50,16 @@ class RegisterContactAdapter : RecyclerView.Adapter<RegisterContactAdapter.ViewH
                 imageUser.setImageResource(R.drawable.ic_account_outline)
                 name.text = contact.name
                 noPhone.text = contact.phone
+                idUserContact.text = contact.id.toString()
+
+                btnDelete.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(contact)
+//                    val intent = Intent(it.context, RegisterContactsActivity::class.java)
+//                    intent.putExtra(RegisterContactsActivity.EXTRA_DATA, contact)
+//                    it.context.startActivity(intent)
+                }
             }
         }
 
-    }
-
-    companion object {
-        val diffCallback = object : DiffUtil.ItemCallback<DataItem>() {
-            override fun areItemsTheSame( oldItem: DataItem, newItem: DataItem): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
-                return oldItem.id == newItem.id
-            }
-        }
     }
 }
