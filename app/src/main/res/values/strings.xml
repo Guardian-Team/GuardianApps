@@ -92,4 +92,13 @@
     <string name="your_phone_number">Your Phone Number</string>
     <string name="onboarding_image">Onboarding Image</string>
     <string name="delete">Delete</string>
+    <string name="contact_deleted">Contact has been deleted!</string>
+    <string name="contact_delete_failed">Contact Failed to delete!</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="savedialog">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="contact_added">Contact has been added</string>
+    <string name="failed_add_contact">Contact failed to add</string>
+    <string name="fill_first_msg">Please fill in the message first</string>
+    <string name="msg_saved">Message Saved</string>
 </resources>

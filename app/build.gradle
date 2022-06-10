@@ -92,4 +92,7 @@ dependencies {
   implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
   implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
   implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
+
+  //Custom Dialog
+  implementation 'com.afollestad.material-dialogs:core:3.3.0'
 }

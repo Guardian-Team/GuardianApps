@@ -3,6 +3,7 @@ package com.guardian.guardianapp.model
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.guardian.guardianapp.MainViewModel
+import com.guardian.guardianapp.ui.ApplicationViewModel
 import com.guardian.guardianapp.ui.authentication.signin.SignInViewModel
 
 
@@ -17,6 +18,10 @@ class ViewModelFactory(private val pref: UserPreference) : ViewModelProvider.New
 
             modelClass.isAssignableFrom(SignInViewModel::class.java) -> {
                 SignInViewModel(pref) as T
+            }
+
+            modelClass.isAssignableFrom(ApplicationViewModel::class.java) -> {
+                ApplicationViewModel(pref) as T
             }
 //      modelClass.isAssignableFrom(SignInViewModel::class.java) -> {
 //        SignInViewModel(pref) as T
