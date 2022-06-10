@@ -21,6 +21,9 @@ object Helper {
     Locale.US
   ).format(System.currentTimeMillis())
 
+  /**
+   * Show toast
+   */
   fun showToastShort(context: Context, text: String) {
     Toast.makeText(
       context,
@@ -28,7 +31,6 @@ object Helper {
       Toast.LENGTH_SHORT
     ).show()
   }
-
   fun showToastLong(context: FragmentActivity?, text: String) {
     Toast.makeText(
       context,
@@ -37,6 +39,9 @@ object Helper {
     ).show()
   }
 
+  /**
+   * Rotating bitmap -90 degree
+   */
   fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
     val matrix = Matrix()
     return if (isBackCamera) {
@@ -65,11 +70,17 @@ object Helper {
     }
   }
 
+  /**
+   * Create temporary file
+   */
   private fun tempFile(context: Context): File {
     val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     return File.createTempFile(timeStamp, ".jpg", storageDir)
   }
 
+  /**
+   * Get image from uri
+   */
   fun converterUri(selectedImg: Uri, context: Context): File {
     val contentResolver: ContentResolver = context.contentResolver
     val myFile = tempFile(context)
@@ -85,18 +96,21 @@ object Helper {
     return myFile
   }
 
+  /**
+   * Compress Image into 1 Mb
+   */
   fun compressImg(file: File): File {
-    val imgbitmap = BitmapFactory.decodeFile(file.path)
+    val imgBitmap = BitmapFactory.decodeFile(file.path)
     var compressQuality = 100
     var streamLength: Int
     do {
-      val imgbmpStream = ByteArrayOutputStream()
-      imgbitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, imgbmpStream)
-      val bmpPicByteArray = imgbmpStream.toByteArray()
+      val imgBmpStream = ByteArrayOutputStream()
+      imgBitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, imgBmpStream)
+      val bmpPicByteArray = imgBmpStream.toByteArray()
       streamLength = bmpPicByteArray.size
       compressQuality -= 5
     } while (streamLength > 1000000)
-    imgbitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
+    imgBitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
   }
 }

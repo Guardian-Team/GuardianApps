@@ -27,7 +27,7 @@ class AudioAdapter(
     holder.bind(files!![position])
   }
 
-  override fun getItemCount(): Int = files?.size!!
+  override fun getItemCount(): Int = files?.size ?: 0
 
   interface OnItemClickCallback {
     fun onBtnPlayClicked(data: File, bindingAdapter :ItemRowAudioBinding)

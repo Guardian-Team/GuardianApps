@@ -2,7 +2,6 @@ package com.guardian.guardianapp.ui.home
 
 import android.Manifest
 import android.content.Intent
-import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.SystemClock
 import android.speech.RecognitionListener
@@ -20,7 +19,7 @@ import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.FragmentHomeBinding
 import com.guardian.guardianapp.ui.CameraActivity
 import com.guardian.guardianapp.utils.Helper
-import java.io.IOException
+import com.guardian.guardianapp.utils.WavRecorder
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,11 +31,12 @@ class HomeFragment : Fragment() {
   private val activationKeyword: String = "test"
 
   private lateinit var fileName: String
-  private var recorder: MediaRecorder? = null
   private var isPressed: Boolean = false
 
   private var _binding: FragmentHomeBinding? = null
   private val binding get() = _binding!!
+
+  private lateinit var wavRecord: WavRecorder
 
   // Requesting permission
   private val requestPermission =
@@ -62,6 +62,7 @@ class HomeFragment : Fragment() {
     setSpeechRecognizerIntent()
     setSpeechRecognizer()
     buttonListener()
+    wavRecord = WavRecorder(requireActivity().baseContext)
     return binding.root
   }
 
@@ -125,36 +126,19 @@ class HomeFragment : Fragment() {
 
   private fun startRecording() {
     setFileName()
-
     binding.chronometer.base = SystemClock.elapsedRealtime()
     binding.chronometer.start()
 
-    recorder = MediaRecorder().apply {
-      setAudioSource(MediaRecorder.AudioSource.MIC)
-      setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-      setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
-      setOutputFile(fileName)
-
-      try {
-        prepare()
-      } catch (e: IOException) {
-        Log.e(LOG_AUDIO_TAG, "prepare() failed")
-      }
-      start()
-    }
+    wavRecord.startRecording()
+    Log.d(LOG_AUDIO_TAG, "Start Recording")
   }
+
 
   private fun stopRecording() {
     binding.chronometer.stop()
-    recorder?.apply {
-      try {
-        stop()
-        release()
-      } catch (e: IOException) {
-        Log.e(LOG_AUDIO_TAG, "release stop() failed")
-      }
-    }
-    recorder = null
+
+    wavRecord.stopRecording()
+    Log.d(LOG_AUDIO_TAG, "Stop Recording")
   }
 
   private fun setSpeechRecognizerIntent() {
@@ -214,13 +198,12 @@ class HomeFragment : Fragment() {
 
       override fun onEvent(i: Int, bundle: Bundle) {}
     })
-
   }
+
 
   override fun onStop() {
     super.onStop()
-    recorder?.release()
-    recorder = null
+    wavRecord.stopRecording()
     speech.destroy()
   }
 
