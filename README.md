@@ -19,13 +19,13 @@ This application allows you to:
 ## Screenshots
 
 [<img src="/screenshot/ss1.png" align="left"
-width="300"
+width="200"
 hspace="10" vspace="10">](/screenshot/ss1.png)
 [<img src="/screenshot/ss2.png" align="center"
-width="300"
+width="200"
 hspace="10" vspace="10">](/screenshot/ss2.png)
 [<img src="/screenshot/ss3.png" align="right"
-width="300"
+width="200"
 hspace="10" vspace="10">](/screenshot/ss3.png)
 
 
