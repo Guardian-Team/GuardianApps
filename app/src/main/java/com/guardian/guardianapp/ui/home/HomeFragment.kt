@@ -20,6 +20,7 @@ import com.guardian.guardianapp.databinding.FragmentHomeBinding
 import com.guardian.guardianapp.ui.CameraActivity
 import com.guardian.guardianapp.utils.Helper
 import com.guardian.guardianapp.utils.WavRecorder
+import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -115,13 +116,14 @@ class HomeFragment : Fragment() {
     val now = Date()
     val formatter = SimpleDateFormat("dd.MMM.yyyy_hhmmsss", Locale.getDefault())
     fileName =
-      "${activity?.getExternalFilesDir("/")?.absolutePath}/Record_${formatter.format(now)}.3gp"
+      "${activity?.getExternalFilesDir("/")?.absolutePath}/Record_${formatter.format(now)}.wav"
   }
 
   private fun onRecord(start: Boolean) = if (start) {
     startRecording()
   } else {
     stopRecording()
+    detectViolence()
   }
 
   private fun startRecording() {
@@ -139,6 +141,7 @@ class HomeFragment : Fragment() {
 
     wavRecord.stopRecording()
     Log.d(LOG_AUDIO_TAG, "Stop Recording")
+    Log.d(LOG_AUDIO_TAG, "Detect Success")
   }
 
   private fun setSpeechRecognizerIntent() {
@@ -200,6 +203,45 @@ class HomeFragment : Fragment() {
     })
   }
 
+  private fun detectViolence(){
+    val mfcc = Helper.mfcc(requireActivity(), fileName)
+    Log.d("Result ByteArray", mfcc.toString())
+
+    val byteBuffer = ByteBuffer.wrap(mfcc)
+    Log.d("Result ByteBuffer", byteBuffer.toString())
+
+    val detection = Helper.audioDetection(requireActivity(), byteBuffer)
+
+    /**
+     * Index of Array for detect 4 types of violence
+     * 0- sexual
+     * 1- stalking
+     * 2- physical
+     * 3- domestic
+     */
+    val temp = listOf(detection[0],
+      detection[1],
+      detection[2],
+      detection[3]
+    )
+//    val result = temp.maxOrNull() ?: 0
+    val index = temp.maxOrNull().let {
+      temp.indexOf(it)
+    }
+    Log.d("Result AudioDetection sexual", detection[0].toString())
+    Log.d("Result AudioDetection stalking", detection[1].toString())
+    Log.d("Result AudioDetection physical", detection[2].toString())
+    Log.d("Result AudioDetection domestic", detection[3].toString())
+
+    lateinit var message : String
+    when(index){
+      0 -> message = "Sexual"
+      1 -> message = "Stalking"
+      2 -> message = "Physical"
+      3 -> message = "Domestic"
+    }
+    Helper.showToastLong(requireActivity(), message)
+  }
 
   override fun onStop() {
     super.onStop()

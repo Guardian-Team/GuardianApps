@@ -7,9 +7,17 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
+import com.guardian.guardianapp.ml.ModelAudio
+import com.guardian.guardianapp.ml.ModelZupa
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.*
+import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -112,5 +120,56 @@ object Helper {
     } while (streamLength > 1000000)
     imgBitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
+  }
+
+  /**
+   * Run MFCC process using python
+   */
+  fun mfcc(context: Context, path: String): ByteArray {
+    if (!Python.isStarted()) {
+      Python.start(AndroidPlatform(context))
+      Log.i("Python", "python start")
+    }
+    val python = Python.getInstance()
+    val pythonFile = python.getModule("app_preprocess")
+
+    return pythonFile.callAttr("preprocess", path).toJava(ByteArray::class.java)
+  }
+
+
+  /**
+   * Run Train using Model
+   */
+  fun audioDetection(context: Context, buffer: ByteBuffer): FloatArray {
+    val model = ModelAudio.newInstance(context)
+
+    // Creates inputs for reference.
+    val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 44, 13, 1), DataType.FLOAT32)
+    inputFeature0.loadBuffer(buffer)
+
+    // Runs model inference and gets result.
+    val outputs = model.process(inputFeature0)
+    val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
+
+    // Releases model resources if no longer used.
+    model.close()
+    return outputFeature0
+  }
+
+  fun audioDetectionZupa(context: Context, buffer: ByteBuffer): FloatArray {
+    val model = ModelZupa.newInstance(context)
+
+// Creates inputs for reference.
+    val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 44, 13, 1), DataType.FLOAT32)
+    inputFeature0.loadBuffer(buffer)
+
+// Runs model inference and gets result.
+    val outputs = model.process(inputFeature0)
+    val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
+
+// Releases model resources if no longer used.
+    model.close()
+
+    return outputFeature0
   }
 }

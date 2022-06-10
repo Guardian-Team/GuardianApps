@@ -1,6 +1,5 @@
 package com.guardian.guardianapp.ui
 
-import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +9,11 @@ import com.guardian.guardianapp.databinding.ActivityImageResultBinding
 import com.guardian.guardianapp.ml.ModelImage1
 import com.guardian.guardianapp.utils.Helper
 import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.common.ops.NormalizeOp
+import org.tensorflow.lite.support.common.ops.QuantizeOp
 import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
-import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteOrder
 
@@ -26,6 +26,7 @@ class ImageResultActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     val path = intent.getStringExtra(EXTRA_PATH_IMAGE)!!
+
     Log.d("path", path)
 
     machineLearning(path)
@@ -41,7 +42,8 @@ class ImageResultActivity : AppCompatActivity() {
     val imageProcessor = ImageProcessor.Builder()
       // Resize using Bilinear and Nearest Neighbor methods
       .add(ResizeOp(150, 150, ResizeOp.ResizeMethod.BILINEAR))
-      .add(ResizeWithCropOrPadOp(150, 150))
+      .add(NormalizeOp(127.5F, 127.5F))
+      .add(QuantizeOp(128F, 1 / 128F))
       .build()
 
     val image = TensorImage(DataType.FLOAT32)
@@ -66,7 +68,7 @@ class ImageResultActivity : AppCompatActivity() {
     model.close()
 
     // show result
-    if (outputFeature0[0] < 0.8) {
+    if (outputFeature0[0] < 0.8F) {
       binding.tvResult.text = getString(R.string.not_violence)
     } else{
       binding.tvResult.text = getString(R.string.violence)

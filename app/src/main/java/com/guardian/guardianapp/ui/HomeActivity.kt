@@ -66,7 +66,7 @@ class HomeActivity : AppCompatActivity() {
 
         val headerView = binding.navView.getHeaderView(0)
         val navUsername: TextView = headerView.findViewById(R.id.username)
-        val imgProfil: ImageView = headerView.findViewById(R.id.user_picture)
+        val imgProfile: ImageView = headerView.findViewById(R.id.user_picture)
         val btnClose: ImageView = headerView.findViewById(R.id.btn_close)
 
         viewModel.getUser().observe(this) {
@@ -74,12 +74,12 @@ class HomeActivity : AppCompatActivity() {
             viewModel.itemUser.observe(this) { dataUser ->
                 navUsername.text = dataUser.name
                 if (dataUser.avatar != null) {
-                    Glide.with(imgProfil)
+                    Glide.with(imgProfile)
                         .load(dataUser.avatar)
                         .centerCrop()
-                        .into(imgProfil)
+                        .into(imgProfile)
                 } else {
-                    imgProfil.setImageResource(R.drawable.avatar_null)
+                    imgProfile.setImageResource(R.drawable.avatar_null)
                 }
 
             }

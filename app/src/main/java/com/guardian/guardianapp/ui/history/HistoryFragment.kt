@@ -20,8 +20,12 @@ import com.guardian.guardianapp.databinding.FragmentHistoryBinding
 import com.guardian.guardianapp.databinding.ItemRowAudioBinding
 import com.guardian.guardianapp.ui.adapter.AudioAdapter
 import com.guardian.guardianapp.utils.Helper
+import com.guardian.guardianapp.utils.Helper.audioDetection
+import com.guardian.guardianapp.utils.Helper.audioDetectionZupa
+import com.guardian.guardianapp.utils.Helper.mfcc
 import java.io.File
 import java.io.IOException
+import java.nio.ByteBuffer
 
 class HistoryFragment : Fragment() {
 
@@ -44,6 +48,7 @@ class HistoryFragment : Fragment() {
     _binding = FragmentHistoryBinding.inflate(inflater, container, false)
 
     setDataHistory()
+
     return binding.root
   }
 
@@ -67,7 +72,6 @@ class HistoryFragment : Fragment() {
         if (isPlaying) {
           bindingAdapter.btnPlayAudio.setImageResource(R.drawable.ic_pause)
           onPlay(true)
-
           //stop play when finish
           player?.setOnCompletionListener {
             stopPlaying()
@@ -75,6 +79,7 @@ class HistoryFragment : Fragment() {
             bindingAdapter.btnPlayAudio.setImageResource(R.drawable.ic_play)
           }
         } else {
+          setDataHistory()
           bindingAdapter.btnPlayAudio.setImageResource(R.drawable.ic_play)
           onPlay(false)
         }
@@ -84,11 +89,10 @@ class HistoryFragment : Fragment() {
         alertDialog(data)
       }
     })
-
     showIfNoAudio()
   }
 
-  private fun alertDialog(data: File){
+  private fun alertDialog(data: File) {
     val dialog = Dialog(requireActivity())
 
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -111,7 +115,7 @@ class HistoryFragment : Fragment() {
     dialog.show()
   }
 
-  private fun successDialog(){
+  private fun successDialog() {
     val dialog = Dialog(requireActivity())
 
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -127,7 +131,7 @@ class HistoryFragment : Fragment() {
     dialog.show()
   }
 
-  private fun showIfNoAudio(){ // show text if there's no audio file
+  private fun showIfNoAudio() { // show text if there's no audio file
     if (adapter.itemCount >= 1) {
       binding.rvAudioFiles.layoutManager = LinearLayoutManager(context)
       binding.rvAudioFiles.adapter = adapter

@@ -23,9 +23,10 @@ class WavRecorder(val context: Context) {
   private var recordingThread: Thread? = null
 
   fun startRecording() {
+    val now = Date()
     val formatter = SimpleDateFormat("dd.MMM.yyyy_hhmmsss", Locale.getDefault())
-    val filename = "recording-${formatter.format(Date())}.wav"
-    val path =  "${context.getExternalFilesDir("/")?.path}/$filename"
+    val path =
+      "${context.getExternalFilesDir("/")?.absolutePath}/Record_${formatter.format(now)}.wav"
 
     Log.d("Path File", path)
 
@@ -198,7 +199,7 @@ class WavRecorder(val context: Context) {
   }
 
   companion object {
-    const val RECORDER_SAMPLE_RATE = 8000
+    const val RECORDER_SAMPLE_RATE = 48000
     const val RECORDER_CHANNELS: Int = android.media.AudioFormat.CHANNEL_IN_MONO
     const val RECORDER_AUDIO_ENCODING: Int = android.media.AudioFormat.ENCODING_PCM_16BIT
     const val BITS_PER_SAMPLE: Short = 16
