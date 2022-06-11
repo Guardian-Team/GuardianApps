@@ -36,6 +36,7 @@ This app requires android 6.0 and following permissions:
 - View Network Connections.
 - Camera Access.
 - Location Access.
+- Record Audio Access
 - Read and write access to external storage.
 
 ## Requirement for this Project
