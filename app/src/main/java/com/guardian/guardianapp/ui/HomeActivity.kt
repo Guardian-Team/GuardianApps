@@ -2,10 +2,12 @@ package com.guardian.guardianapp.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -41,9 +43,16 @@ class HomeActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_settings, R.id.nav_history
+                R.id.nav_home, R.id.nav_settings, R.id.nav_history, R.id.nav_find_me
             ), binding.drawerLayout
         )
+        val permissions = arrayOf(
+            android.Manifest.permission.SEND_SMS,
+            android.Manifest.permission.READ_SMS
+        )
+
+        ActivityCompat.requestPermissions(this, permissions, PackageManager.PERMISSION_GRANTED)
+
         setViewModel()
         setupNavigation()
     }
@@ -101,5 +110,9 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, AuthActivity::class.java))
             finishAffinity()
         }
+    }
+
+    fun getDataStore(): DataStore<Preferences> {
+        return dataStore
     }
 }

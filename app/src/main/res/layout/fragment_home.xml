@@ -107,16 +107,39 @@
     tools:ignore="UseSwitchCompatOrMaterialXml" />
 
   <TextView
-    android:id="@+id/textView2"
-    style="@style/RegularTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/or"
-    android:textSize="20sp"
-    app:layout_constraintBottom_toTopOf="@+id/btn_take_picture"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView" />
+      android:id="@+id/sendlocation"
+      style="@style/MediumTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="@string/send_location"
+      app:layout_constraintStart_toStartOf="@+id/btn_take_picture"
+      app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+  <Switch
+      android:id="@+id/switch_send_location"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:checked="false"
+      android:minHeight="48dp"
+      android:thumb="@drawable/ic_thumb"
+      android:track="@drawable/bg_custom"
+      app:layout_constraintBottom_toBottomOf="@+id/sendlocation"
+      app:layout_constraintEnd_toEndOf="@+id/btn_take_picture"
+      app:layout_constraintTop_toBottomOf="@+id/textView"
+      tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+  <TextView
+      android:id="@+id/textView2"
+      style="@style/RegularTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/or"
+      android:textSize="20sp"
+      app:layout_constraintBottom_toTopOf="@+id/btn_take_picture"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/sendlocation" />
 
   <Button
     android:id="@+id/btn_take_picture"

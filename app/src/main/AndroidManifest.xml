@@ -1,57 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.guardian.guardianapp">
+    package="com.guardian.guardianapp" >
 
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
-      android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-      android:maxSdkVersion="28" />
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:requestLegacyExternalStorage="true"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/Theme.GuardianApp">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GuardianApp" >
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCLuP-E3aDh_FQo_seH1KQajZJpS6mmyTs" />
+
+
         <activity
-          android:name=".ui.ImageResultActivity"
-          android:exported="false" />
+            android:name=".ui.ImageResultActivity"
+            android:exported="false" />
         <activity
-          android:name=".ui.CameraActivity"
-          android:exported="false" />
+            android:name=".ui.CameraActivity"
+            android:exported="false" />
         <activity
-          android:name=".ui.OnboardingActivity"
-          android:exported="false" />
+            android:name=".ui.OnboardingActivity"
+            android:exported="false" />
         <activity
-          android:name=".ui.AccountActivity"
-          android:exported="false" />
+            android:name=".ui.AccountActivity"
+            android:exported="false" />
         <activity
-          android:name=".ui.authentication.AuthActivity"
-          android:exported="false" />
+            android:name=".ui.authentication.AuthActivity"
+            android:exported="false" />
         <activity
-          android:name=".ui.RegisterContactsActivity"
-          android:exported="false" />
+            android:name=".ui.RegisterContactsActivity"
+            android:exported="false" />
         <activity
-          android:name=".ui.ApplicationActivity"
-          android:exported="false" />
+            android:name=".ui.ApplicationActivity"
+            android:exported="false" />
         <activity
-          android:name=".ui.HomeActivity"
-          android:exported="false"
-          android:label="@string/title_activity_home"
-          android:screenOrientation="fullSensor"
-          android:theme="@style/Theme.GuardianApp.NoActionBar" />
+            android:name=".ui.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.GuardianApp.NoActionBar" />
         <activity
-          android:name=".MainActivity"
-          android:exported="true"
-          android:theme="@style/Theme.App.Starting">
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

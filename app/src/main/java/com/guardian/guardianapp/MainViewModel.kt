@@ -3,6 +3,7 @@ package com.guardian.guardianapp
 import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.*
+import com.guardian.guardianapp.model.SettingsModel
 import com.guardian.guardianapp.model.UserModel
 import com.guardian.guardianapp.model.UserPreference
 import com.guardian.guardianapp.source.remote.api.ApiConfig
@@ -168,6 +169,11 @@ class MainViewModel(private val pref: UserPreference): ViewModel() {
     fun getUser(): LiveData<UserModel> {
         return pref.getUser().asLiveData()
     }
+
+    fun getUserSettings(): LiveData<SettingsModel> {
+        return pref.getUserSettings().asLiveData()
+    }
+
 
     fun logout() {
         viewModelScope.launch {

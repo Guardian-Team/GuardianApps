@@ -22,7 +22,6 @@ import com.guardian.guardianapp.databinding.ActivityAccountBinding
 import com.guardian.guardianapp.model.UserPreference
 import com.guardian.guardianapp.model.ViewModelFactory
 import com.guardian.guardianapp.utils.Helper
-import okhttp3.MediaType.Companion.parse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -123,7 +122,9 @@ class AccountActivity : AppCompatActivity() {
                     }
                 }
                 finish()
+                overridePendingTransition(0, 0)
                 startActivity(intent)
+                overridePendingTransition(0, 0)
             }
         }
     }
