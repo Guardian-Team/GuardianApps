@@ -38,9 +38,10 @@ import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class HomeFragment : Fragment() {
-    private val speech: SpeechRecognizer by lazy { SpeechRecognizer.createSpeechRecognizer(activity) }
-    private val speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+    private lateinit var speech: SpeechRecognizer
+    private lateinit var speechRecognizerIntent: Intent
 
     private var isActivated: Boolean = false
     private val activationKeyword: String = "test"
@@ -89,6 +90,7 @@ class HomeFragment : Fragment() {
         setViewModel()
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -176,22 +178,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setSpeechRecognizerIntent() {
+        speech = SpeechRecognizer.createSpeechRecognizer(activity)
+        speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+
         speechRecognizerIntent.putExtra(
             RecognizerIntent.EXTRA_LANGUAGE_MODEL,
             RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
-        )
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-        speechRecognizerIntent.putExtra(
-            RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS,
-            1000
-        )
-        speechRecognizerIntent.putExtra(
-            RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS,
-            1000
-        )
-        speechRecognizerIntent.putExtra(
-            RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
-            1500
         )
     }
 
@@ -199,41 +191,42 @@ class HomeFragment : Fragment() {
         speech.setRecognitionListener(object : RecognitionListener {
             override fun onReadyForSpeech(bundle: Bundle) {}
 
-            override fun onBeginningOfSpeech() {}
+            override fun onBeginningOfSpeech() {
+                Log.d("SpeechRecognizer ", "Starting")
+            }
 
             override fun onRmsChanged(v: Float) {}
 
             override fun onBufferReceived(bytes: ByteArray) {}
 
-            override fun onEndOfSpeech() {}
+            override fun onEndOfSpeech() {
+                Log.d("SpeechRecognizer ", "Ended")
+            }
 
             override fun onError(i: Int) {}
 
             override fun onResults(results: Bundle) {
                 val matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
 
-                // trigger to active standby mode use "test"
                 if (matches != null) {
                     if (isActivated) {
                         isActivated = false
                         speech.stopListening()
                     } else {
-                        matches.firstOrNull {
-                            it.contains(activationKeyword, true)
-                        }.let {
+                        if (matches[0].contains(activationKeyword)) {
                             isActivated = true
+                            Helper.showToastLong(requireActivity(), "test")
                             isPressed = !isPressed // reverse
                             onRecord(isPressed)
                             changeRecordButton(isPressed)
                         }
-                        speech.startListening(speechRecognizerIntent)
                     }
                 }
             }
 
-            override fun onPartialResults(bundle: Bundle) {}
+            override fun onPartialResults(p0: Bundle?) {}
 
-            override fun onEvent(i: Int, bundle: Bundle) {}
+            override fun onEvent(p0: Int, p1: Bundle?) {}
         })
     }
 
@@ -333,9 +326,9 @@ class HomeFragment : Fragment() {
             ViewModelFactory(pref)
         )[MainViewModel::class.java]
 
-        viewModel.getUser().observe(viewLifecycleOwner) {
-            viewModel.getListContactUser(it.userid, it.token)
-            viewModel.itemUserContact.observe(viewLifecycleOwner) {data ->
+        viewModel.getUser().observe(viewLifecycleOwner) { User ->
+            viewModel.getListContactUser(User.userid, User.token)
+            viewModel.itemUserContact.observe(viewLifecycleOwner) { data ->
                 for (idx in data) {
                     listContact.add(idx.phone)
                 }
