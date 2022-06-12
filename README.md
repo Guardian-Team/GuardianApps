@@ -39,6 +39,7 @@ This app requires android 6.0 and following permissions:
 - Location Access.
 - Record Audio Access
 - Read and write access to external storage.
+- Read and write access to Message Application
 
 ## Requirement for this Project
 
