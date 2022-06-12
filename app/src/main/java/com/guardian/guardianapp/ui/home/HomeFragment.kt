@@ -269,6 +269,10 @@ class HomeFragment : Fragment() {
             3 -> message = "Domestic"
         }
         Helper.showToastLong(requireActivity(), message)
+        //Send Location to All Registered Contact via Default Message
+        Handler(Looper.getMainLooper()).postDelayed({
+            getMyLocation()
+        }, 10000L)
     }
 
     override fun onStop() {

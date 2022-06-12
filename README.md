@@ -15,6 +15,7 @@ This application allows you to:
 - Completely ad-free.
 - Detects 4 types of violence for audio files.
 - Detect whether it is violence based on the image
+- Send Last Location to Registered Contact via Default Message App SmartPhone
 
 ## Screenshots
 
