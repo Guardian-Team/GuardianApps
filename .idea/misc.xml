@@ -91,6 +91,7 @@
         <entry key="app/src/main/res/drawable/ic_press_button_on.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_right_arrow.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_setting.xml" value="0.1175" />
+        <entry key="app/src/main/res/drawable/ic_share.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ic_signout.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_switch_button_off.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_switch_button_on.xml" value="0.1175" />
@@ -100,7 +101,7 @@
         <entry key="app/src/main/res/drawable/ic_trash_on.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/toggle_play.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.21354166666666666" />
-        <entry key="app/src/main/res/layout/activity_application.xml" value="0.17528858486532706" />
+        <entry key="app/src/main/res/layout/activity_application.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17528858486532706" />
@@ -110,8 +111,9 @@
         <entry key="app/src/main/res/layout/add_contact_dialog.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.17528858486532706" />
         <entry key="app/src/main/res/layout/content_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.12590579710144928" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.18" />

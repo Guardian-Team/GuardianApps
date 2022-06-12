@@ -13,19 +13,14 @@ import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.guardian.guardianapp.R
 import com.guardian.guardianapp.databinding.FragmentHistoryBinding
 import com.guardian.guardianapp.databinding.ItemRowAudioBinding
 import com.guardian.guardianapp.ui.adapter.AudioAdapter
 import com.guardian.guardianapp.utils.Helper
-import com.guardian.guardianapp.utils.Helper.audioDetection
-import com.guardian.guardianapp.utils.Helper.audioDetectionZupa
-import com.guardian.guardianapp.utils.Helper.mfcc
 import java.io.File
 import java.io.IOException
-import java.nio.ByteBuffer
 
 class HistoryFragment : Fragment() {
 
@@ -43,8 +38,6 @@ class HistoryFragment : Fragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    val historyViewModel =
-      ViewModelProvider(this)[HistoryViewModel::class.java]
     _binding = FragmentHistoryBinding.inflate(inflater, container, false)
 
     setDataHistory()

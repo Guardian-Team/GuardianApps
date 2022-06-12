@@ -21,6 +21,7 @@ android {
 
     python {
       buildPython PYTHON_DIR // directory of python add on gradle properties
+      buildPython "/usr/bin/python3"
     }
 
     sourceSets{

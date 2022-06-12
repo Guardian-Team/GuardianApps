@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    private const val BaseURL = "https://guardian-app-65fh6hwbiq-et.a.run.app/api/"
+    private const val BaseURL = "https://guardian-api-65fh6hwbiq-uc.a.run.app/api/"
     private val client: Retrofit
         get() {
             val gson = GsonBuilder()

@@ -64,6 +64,7 @@
     <string name="save">Save Edit</string>
     <string name="edit_photo_profile">change photo profile</string>
     <string name="no_audio_recorded">Oppsss…\nNo History Founds!</string>
+    <string name="no_contact">Oppsss…\nNo Contact Founds!</string>
     <string name="play_audio">play audio</string>
     <string name="the_same_experience_as">The same experience as being guarded by a bodyguard</string>
     <string name="get_started2">Get Started</string>
@@ -101,4 +102,8 @@
     <string name="failed_add_contact">Contact failed to add</string>
     <string name="fill_first_msg">Please fill in the message first</string>
     <string name="msg_saved">Message Saved</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="share_location">Share Location</string>
+    <string name="location_sending_success">Location Sucessfully sending!</string>
 </resources>

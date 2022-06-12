@@ -35,9 +35,9 @@ class RegisterContactsActivity : AppCompatActivity() {
     setContentView(binding.root)
     adapter = RegisterContactAdapter()
     setupRecycleView()
-    btnListener()
     setViewModel()
     setListContact()
+    btnListener()
     setupToolbar()
     showLoading()
   }
@@ -62,7 +62,10 @@ class RegisterContactsActivity : AppCompatActivity() {
           }
         }
         finish()
+        overridePendingTransition(0, 0)
         startActivity(intent)
+        overridePendingTransition(0, 0)
+        adapter.notifyDataSetChanged()
       }
     })
 
@@ -99,7 +102,10 @@ class RegisterContactsActivity : AppCompatActivity() {
       }
       dialog.dismiss()
       finish()
+      overridePendingTransition(0, 0)
       startActivity(intent)
+      overridePendingTransition(0, 0)
+      adapter.notifyDataSetChanged()
     }
 
     val buttonCancel = dialog.findViewById(R.id.btn_cancel) as Button

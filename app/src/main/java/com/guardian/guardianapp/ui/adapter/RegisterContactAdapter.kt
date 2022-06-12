@@ -20,13 +20,9 @@ class RegisterContactAdapter : RecyclerView.Adapter<RegisterContactAdapter.ViewH
     }
 
     fun setListContact(itemContact: List<DataItem>){
-//        val diffCall = DiffCallback(listContact, itemContact)
-//        val result = DiffUtil.calculateDiff(diffCall)
-
         listContact.clear()
         listContact.addAll(itemContact)
         notifyDataSetChanged()
-//        result.dispatchUpdatesTo(this)
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -54,9 +50,6 @@ class RegisterContactAdapter : RecyclerView.Adapter<RegisterContactAdapter.ViewH
 
                 btnDelete.setOnClickListener {
                     onItemClickCallback?.onItemClicked(contact)
-//                    val intent = Intent(it.context, RegisterContactsActivity::class.java)
-//                    intent.putExtra(RegisterContactsActivity.EXTRA_DATA, contact)
-//                    it.context.startActivity(intent)
                 }
             }
         }

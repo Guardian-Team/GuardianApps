@@ -18,76 +18,84 @@ import com.guardian.guardianapp.utils.Helper
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("users")
 
 class ApplicationActivity : AppCompatActivity() {
-  private lateinit var binding: ActivityApplicationBinding
-  private lateinit var viewModel: ApplicationViewModel
+    private lateinit var binding: ActivityApplicationBinding
+    private lateinit var viewModel: ApplicationViewModel
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    binding = ActivityApplicationBinding.inflate(layoutInflater)
-    setContentView(binding.root)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityApplicationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    setupToolbar()
-    setViewModel()
-    btnListener()
-    showSosMsg()
-  }
+        setupToolbar()
+        setViewModel()
+        btnListener()
+        showSosMsg()
+    }
 
-  private fun setupToolbar() {
-    setSupportActionBar(binding.toolbar)
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    supportActionBar?.setDisplayShowHomeEnabled(true)
-    binding.toolbar.setNavigationIcon(R.drawable.ic_back_grey)
-  }
+    private fun setupToolbar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        binding.toolbar.setNavigationIcon(R.drawable.ic_back_grey)
+    }
 
-  override fun onSupportNavigateUp(): Boolean {
-    onBackPressed()
-    return true
-  }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 
-  private fun btnListener(){
-    binding.apply {
-      registeredContacts.setOnClickListener {
-        startActivity(Intent(this@ApplicationActivity, RegisterContactsActivity::class.java))
-      }
-      btnSaveMsg.setOnClickListener {
-        if (textSos.text != null){
-          saveSosMsg()
-          Helper.showToastShort(this@ApplicationActivity, getString(R.string.msg_saved))
-          finish()
-          startActivity(intent)
-        }else{
-          Helper.showToastShort(this@ApplicationActivity, getString(R.string.fill_first_msg))
+    private fun btnListener() {
+        binding.apply {
+            registeredContacts.setOnClickListener {
+                startActivity(
+                    Intent(
+                        this@ApplicationActivity,
+                        RegisterContactsActivity::class.java
+                    )
+                )
+            }
+            btnSaveMsg.setOnClickListener {
+                if (textSos.text != null) {
+                    saveSosMsg()
+                    Helper.showToastShort(this@ApplicationActivity, getString(R.string.msg_saved))
+                    finish()
+                    startActivity(intent)
+                } else {
+                    Helper.showToastShort(
+                        this@ApplicationActivity,
+                        getString(R.string.fill_first_msg)
+                    )
+                }
+            }
+            toggleDarkMode.setOnClickListener {
+                Helper.showToastShort(this@ApplicationActivity, getString(R.string.available_soon))
+            }
+
         }
-      }
-      toggleDarkMode.setOnClickListener {
-        Helper.showToastShort(this@ApplicationActivity, getString(R.string.available_soon))
-      }
 
     }
 
-  }
+    private fun setViewModel() {
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(UserPreference.getInstance(dataStore))
+        )[ApplicationViewModel::class.java]
 
-  private fun setViewModel() {
-    viewModel = ViewModelProvider(
-      this,
-      ViewModelFactory(UserPreference.getInstance(dataStore))
-    )[ApplicationViewModel::class.java]
-
-  }
-
-  private fun showSosMsg() {
-    viewModel.getUserSettings().observe(this) {
-      if (it.msgSos != ""){
-        binding.textSos.setText(it.msgSos)
-      }
     }
-  }
 
-  private fun saveSosMsg(){
-    val model = SettingsModel(
-      binding.textSos.text.toString()
-    )
-    viewModel.saveUserSettings(model)
-  }
+    private fun showSosMsg() {
+        viewModel.getUserSettings().observe(this) {
+            if (it.msgSos != "") {
+                binding.textSos.setText(it.msgSos)
+            }
+        }
+    }
+
+    private fun saveSosMsg() {
+        val model = SettingsModel(
+            binding.textSos.text.toString()
+        )
+        viewModel.saveUserSettings(model)
+    }
 
 }

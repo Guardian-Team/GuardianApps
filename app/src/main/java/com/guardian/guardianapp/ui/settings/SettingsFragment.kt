@@ -49,6 +49,9 @@ class SettingsFragment : Fragment() {
       setTheme.setOnClickListener {
         Helper.showToastLong(activity, getString(R.string.available_soon))
       }
+      toggleDarkMode.setOnClickListener {
+        Helper.showToastLong(activity, getString(R.string.available_soon))
+      }
     }
   }
 
