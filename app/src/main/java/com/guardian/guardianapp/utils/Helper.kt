@@ -155,21 +155,4 @@ object Helper {
     model.close()
     return outputFeature0
   }
-
-//  fun audioDetectionZupa(context: Context, buffer: ByteBuffer): FloatArray {
-//    val model = ModelZupa.newInstance(context)
-//
-//// Creates inputs for reference.
-//    val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 44, 13, 1), DataType.FLOAT32)
-//    inputFeature0.loadBuffer(buffer)
-//
-//// Runs model inference and gets result.
-//    val outputs = model.process(inputFeature0)
-//    val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
-//
-//// Releases model resources if no longer used.
-//    model.close()
-//
-//    return outputFeature0
-//  }
 }
